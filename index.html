@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creativo Studio — Modernized</title>
+
+  <!-- Tailwind Play CDN (modern, customizable) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#5b21b6',
+            accent: '#7c3aed',
+            light: '#f8fafc'
+          },
+          animation: {
+            float: 'float 6s ease-in-out infinite'
+          },
+          keyframes: {
+            float: {
+              '0%,100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    /* subtle glass effect for navbar */
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); }
+    /* focus for accessibility */
+    .focus-ring:focus { outline: 3px solid rgba(99,102,241,0.15); outline-offset: 3px; }
+    /* improve image aspect and object-fit fallback */
+    .img-cover { object-fit: cover; width: 100%; height: 100%; }
+    /* reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased leading-relaxed">
+
+  <!-- NAVBAR -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <nav class="glass border-b border-gray-200/40 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="#home" class="flex items-center gap-3">
+            <div class="p-2 rounded-md bg-gradient-to-r from-primary to-accent text-white shadow-md">
+              <i class="fas fa-brush"></i>
+            </div>
+            <div>
+              <h1 class="text-lg font-extrabold leading-none">Creativo <span class="font-light">Studio</span></h1>
+              <p class="text-xs text-gray-600">Design • UI/UX • Brand</p>
+            </div>
+          </a>
+
+          <!-- desktop links -->
+          <div class="hidden md:flex items-center space-x-6">
+            <a href="#home" class="text-sm font-medium hover:text-primary transition">Home</a>
+            <a href="#about" class="text-sm font-medium hover:text-primary transition">About</a>
+            <a href="#services" class="text-sm font-medium hover:text-primary transition">Services</a>
+            <a href="#testimonials" class="text-sm font-medium hover:text-primary transition">Testimonials</a>
+            <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold shadow hover:opacity-95 transition">Contact</a>
+          </div>
+
+          <!-- mobile menu button -->
+          <div class="md:hidden">
+            <button id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md focus-ring">
+              <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white/95">
+        <div class="px-4 py-4 space-y-2">
+          <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50">Home</a>
+          <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50">About</a>
+          <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50">Services</a>
+          <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50">Testimonials</a>
+          <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-primary text-white">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main class="pt-28">
+    <section id="home" class="relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          <!-- left content -->
+          <div class="space-y-6 text-center lg:text-left">
+            <p class="inline-block px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium">Creativo Studio</p>
+            <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">We design <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">impactful</span> digital experiences</h2>
+            <p class="text-gray-600 text-lg max-w-xl mx-auto lg:mx-0">Beautiful interfaces, thoughtful UX, and measurable results — we craft products that people love and businesses grow from.</p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#services" class="px-6 py-3 rounded-full bg-white text-primary font-semibold shadow hover:translate-y-[-2px] transform transition">Explore Services</a>
+              <a href="#contact" class="px-6 py-3 rounded-full border border-primary text-primary font-semibold hover:bg-primary/10 transition">Get in Touch</a>
+            </div>
+
+            <div class="mt-6 flex items-center gap-6 justify-center lg:justify-start text-sm text-gray-500">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-50 rounded-full flex items-center justify-center"><i class="fas fa-check text-indigo-600"></i></div>
+                <div>
+                  <div class="font-medium">User Research</div>
+                  <div class="text-xs">Interviews & Testing</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-50 rounded-full flex items-center justify-center"><i class="fas fa-bolt text-indigo-600"></i></div>
+                <div>
+                  <div class="font-medium">Fast Delivery</div>
+                  <div class="text-xs">Optimized & responsive</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- right image card -->
+          <div class="relative">
+            <div class="rounded-2xl shadow-2xl overflow-hidden transform transition-transform hover:scale-[1.02]">
+              <div class="relative h-80 lg:h-96">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80" alt="Team working on design" class="img-cover rounded-2xl w-full h-full">
+                <div class="absolute inset-0 pointer-events-none">
+                  <svg viewBox="0 0 600 600" class="absolute -right-10 -bottom-8 w-60 opacity-30 animate-float" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#7c3aed" /><stop offset="1" stop-color="#5b21b6" /></linearGradient></defs><circle cx="200" cy="200" r="200" fill="url(#g)" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- quick stats -->
+            <div class="mt-6 grid grid-cols-3 gap-4 text-center text-sm">
+              <div class="p-4 bg-white rounded-xl shadow flex flex-col">
+                <span class="font-extrabold text-lg">40%</span>
+                <span class="text-gray-500">Avg conversion lift</span>
+              </div>
+              <div class="p-4 bg-white rounded-xl shadow flex flex-col">
+                <span class="font-extrabold text-lg">120+</span>
+                <span class="text-gray-500">Projects delivered</span>
+              </div>
+              <div class="p-4 bg-white rounded-xl shadow flex flex-col">
+                <span class="font-extrabold text-lg">10+</span>
+                <span class="text-gray-500">Years combined</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- decorative wave -->
+      <div class="w-full -mt-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-20 text-white"><path fill="currentColor" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="inline-block px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm">About Us</p>
+        <h3 class="text-3xl font-extrabold mt-4">Who We Are</h3>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-4">We're a small team of designers, researchers and front-end engineers who love crafting interfaces that solve real problems and feel delightful.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+        <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl transition">
+          <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-lightbulb text-indigo-600"></i></div>
+          <h4 class="font-semibold mb-2">Creative Thinking</h4>
+          <p class="text-gray-600 text-sm">Fresh ideas, strategic thinking and design systems that scale.</p>
+        </div>
+
+        <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl transition">
+          <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-user-friends text-indigo-600"></i></div>
+          <h4 class="font-semibold mb-2">User-Centered</h4>
+          <p class="text-gray-600 text-sm">Research-driven decisions and accessibility-first interfaces.</p>
+        </div>
+
+        <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl transition">
+          <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-rocket text-indigo-600"></i></div>
+          <h4 class="font-semibold mb-2">Results-Driven</h4>
+          <p class="text-gray-600 text-sm">Metrics-focused design that improves user retention and conversion.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="inline-block px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm">Our Services</p>
+          <h3 class="text-3xl font-extrabold mt-4">What We Offer</h3>
+          <p class="text-gray-600 max-w-2xl mx-auto mt-4">Design systems, UI/UX, brand identity, and high-performance front-end engineering.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- card -->
+          <article class="p-8 bg-white rounded-2xl shadow hover:shadow-2xl transition">
+            <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-palette text-indigo-600"></i></div>
+            <h4 class="font-semibold mb-2">UI/UX Design</h4>
+            <p class="text-gray-600 text-sm mb-4">Research, wireframes, prototypes and handoff-ready designs.</p>
+            <ul class="text-gray-600 text-sm space-y-2">
+              <li>• User Research & Testing</li>
+              <li>• Wireframing & Prototyping</li>
+              <li>• Interactive Design</li>
+            </ul>
+          </article>
+
+          <article class="p-8 bg-white rounded-2xl shadow hover:shadow-2xl transition">
+            <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-code text-indigo-600"></i></div>
+            <h4 class="font-semibold mb-2">Web Design & Frontend</h4>
+            <p class="text-gray-600 text-sm mb-4">Responsive, accessible and performance-first implementations.</p>
+            <ul class="text-gray-600 text-sm space-y-2">
+              <li>• Performance Tuning</li>
+              <li>• SEO & Best Practices</li>
+              <li>• Component Libraries</li>
+            </ul>
+          </article>
+
+          <article class="p-8 bg-white rounded-2xl shadow hover:shadow-2xl transition">
+            <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-id-badge text-indigo-600"></i></div>
+            <h4 class="font-semibold mb-2">Brand Identity</h4>
+            <p class="text-gray-600 text-sm mb-4">Logo systems, color, typography and brand guidelines.</p>
+            <ul class="text-gray-600 text-sm space-y-2">
+              <li>• Visual Identity</li>
+              <li>• Guidelines & Assets</li>
+              <li>• Marketing Collateral</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="inline-block px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm">Our Work</p>
+        <h3 class="text-3xl font-extrabold mt-4">Recent Projects</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- project card -->
+        <figure class="group relative overflow-hidden rounded-2xl shadow-lg">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?auto=format&fit=crop&w=1200&q=80" alt="E-commerce design" class="img-cover h-56 w-full transition-transform duration-500 group-hover:scale-105">
+          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+            <h4 class="text-white font-bold">E-commerce Redesign</h4>
+            <p class="text-gray-200 text-sm">UI/UX • Web Design</p>
+          </figcaption>
+        </figure>
+
+        <figure class="group relative overflow-hidden rounded-2xl shadow-lg">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80" alt="Mobile app" class="img-cover h-56 w-full transition-transform duration-500 group-hover:scale-105">
+          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+            <h4 class="text-white font-bold">Finance App</h4>
+            <p class="text-gray-200 text-sm">Mobile UI • UX</p>
+          </figcaption>
+        </figure>
+
+        <figure class="group relative overflow-hidden rounded-2xl shadow-lg">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80" alt="Brand identity" class="img-cover h-56 w-full transition-transform duration-500 group-hover:scale-105">
+          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+            <h4 class="text-white font-bold">Café Rebrand</h4>
+            <p class="text-gray-200 text-sm">Brand • Packaging</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="#contact" class="inline-block px-8 py-3 rounded-full bg-primary text-white font-semibold hover:opacity-95 transition">View All Projects</a>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h3 class="text-3xl font-extrabold mb-6">What Our Clients Say</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <blockquote class="p-8 bg-white rounded-2xl shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex" class="w-12 h-12 rounded-full object-cover">
+              <div class="text-left">
+                <div class="font-semibold">Alex Johnson</div>
+                <div class="text-xs text-gray-500">CEO of WebWorks</div>
+              </div>
+            </div>
+            <p class="italic text-gray-700">"Creativo transformed our brand and improved conversions significantly. Clear process and great communication."</p>
+          </blockquote>
+
+          <blockquote class="p-8 bg-white rounded-2xl shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria" class="w-12 h-12 rounded-full object-cover">
+              <div class="text-left">
+                <div class="font-semibold">Maria Lee</div>
+                <div class="text-xs text-gray-500">Founder of StudioNova</div>
+              </div>
+            </div>
+            <p class="italic text-gray-700">"Professional, creative, and collaborative — they understood our vision and delivered."</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gradient-to-br from-primary to-accent text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h3 class="text-3xl font-extrabold">Ready to elevate your brand?</h3>
+        <p class="mt-4 text-indigo-100">Let's build something beautiful and effective. We handle design, UX research and frontend implementation.</p>
+        <a href="#contact" class="mt-6 inline-block px-8 py-3 rounded-full bg-white text-primary font-semibold">Start Your Project</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="bg-white p-8 rounded-2xl shadow">
+          <h4 class="font-extrabold text-2xl mb-4">Get in touch</h4>
+          <p class="text-gray-600 mb-6">Tell us about your project and timeline — we'll get back in 1-2 business days.</p>
+
+          <form id="contact-form" class="space-y-4" onsubmit="handleSubmit(event)">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <label class="sr-only" for="name">Name</label>
+              <input id="name" required class="p-3 border border-gray-200 rounded-lg focus-ring" placeholder="Your name" />
+
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" type="email" required class="p-3 border border-gray-200 rounded-lg focus-ring" placeholder="you@example.com" />
+            </div>
+
+            <input id="subject" class="w-full p-3 border border-gray-200 rounded-lg focus-ring" placeholder="Subject" required />
+
+            <textarea id="message" rows="5" class="w-full p-3 border border-gray-200 rounded-lg focus-ring" placeholder="Tell us about your project..." required></textarea>
+
+            <button type="submit" class="w-full inline-flex justify-center items-center gap-3 px-6 py-3 rounded-lg bg-primary text-white font-semibold">Send Message <i class="fas fa-paper-plane"></i></button>
+          </form>
+
+          <p id="form-alert" class="mt-4 text-sm text-green-600 hidden">Message sent — thanks! We'll reply soon.</p>
+        </div>
+
+        <aside>
+          <div class="bg-white p-8 rounded-2xl shadow mb-6">
+            <h5 class="font-semibold">Contact Information</h5>
+            <p class="text-gray-600 mt-2">123 Design Street, Creative City<br>hello@creativostudio.com<br>+1 (555) 123-4567</p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow">
+            <h5 class="font-semibold">Business Hours</h5>
+            <ul class="text-gray-600 mt-2">
+              <li>Mon - Fri: 9:00 AM - 6:00 PM</li>
+              <li>Sat: 10:00 AM - 4:00 PM</li>
+              <li>Sun: Closed</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-12 mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <h4 class="text-2xl font-extrabold">Creativo Studio</h4>
+          <p class="text-gray-400 mt-3">We design beautiful, usable and fast experiences. Crafted with care.</p>
+          <div class="flex gap-3 mt-6">
+            <a class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center" href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h6 class="font-semibold mb-3">Quick Links</h6>
+          <ul class="text-gray-400 space-y-2">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 class="font-semibold mb-3">Services</h6>
+          <ul class="text-gray-400 space-y-2">
+            <li>UI/UX Design</li>
+            <li>Web Design</li>
+            <li>Brand Identity</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm text-gray-500">&copy; 2025 Creativo Studio. All rights reserved.</div>
+    </footer>
+  </main>
+
+  <!-- JS -->
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn && menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // Simple contact form handler (demo)
+    function handleSubmit(e) {
+      e.preventDefault();
+      const alertEl = document.getElementById('form-alert');
+      alertEl.classList.remove('hidden');
+      setTimeout(() => alertEl.classList.add('hidden'), 4000);
+      e.target.reset();
+    }
+
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href.length > 1) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
